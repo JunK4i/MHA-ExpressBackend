@@ -4,12 +4,6 @@ const expect = chai.expect;
 const dotenv = require("dotenv");
 chai.use(chaiHttp);
 
-// import chai from "chai";
-// import chaiHttp from "chai-http";
-// import dotenv from "dotenv";
-// const expect = chai.expect;
-// chai.use(chaiHttp);
-
 dotenv.config();
 const domain = process.env.DOMAIN || "http://localhost:3003/";
 
@@ -24,11 +18,12 @@ describe("Inventory API", () => {
           expect(res).to.have.status(200);
           expect(res.body).to.be.a("array");
           done();
+          cons;
         });
     });
   });
 
-  // Retrieve the ID of the first item in the inventory
+  // get the ID of the first item in the inventory for testing GET /inventory/:id
   let itemId = 0;
   before((done) => {
     chai
@@ -36,12 +31,11 @@ describe("Inventory API", () => {
       .get("api/inventory")
       .end((err, res) => {
         expect(res).to.have.status(200);
-        itemId = res.body[0].id; // Assuming the first item's ID can be used
+        itemId = res.body[0].id;
         done();
       });
   });
 
-  // Test for GET /inventory/:id
   describe("GET /api/inventory/:id", () => {
     it("should get a single inventory item", (done) => {
       chai
@@ -67,7 +61,6 @@ describe("Inventory API", () => {
     });
   });
 
-  // Test for POST /inventory
   describe("POST api/inventory", () => {
     it("should add a new inventory item", (done) => {
       let item = {
@@ -89,15 +82,13 @@ describe("Inventory API", () => {
     });
   });
 
-  // Test for DELETE /inventory/:id
   describe("DELETE /api/inventory/:id", () => {
     it("should delete an inventory item", (done) => {
-      // First, add an item that we'll delete
       let item = {
         name: "Item to Delete",
         description: "This item will be deleted",
         price: 50,
-        quantity: 5,
+        quantity: 0, // Set quantity to 0 for successful deletion
       };
 
       chai
@@ -107,16 +98,15 @@ describe("Inventory API", () => {
         .end((err, postResponse) => {
           expect(postResponse).to.have.status(201);
           const itemId = postResponse.body.id;
-          console.info("Item ID to delete: ", itemId);
 
-          // Now, delete the item
+          // delete the item
           chai
             .request(domain)
             .delete(`api/inventory/${itemId}`)
             .end((deleteErr, deleteResponse) => {
               expect(deleteResponse).to.have.status(204);
 
-              // Optionally, verify that the item is no longer in the inventory
+              // verify that the item is no longer in the inventory
               chai
                 .request(domain)
                 .get(`api/inventory/${itemId}`)
