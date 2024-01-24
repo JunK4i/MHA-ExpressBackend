@@ -1,5 +1,5 @@
 import express from "express";
-import fs from "fs";
+import fs, { write } from "fs";
 import path from "path";
 import Joi from "joi";
 import { v4 as uuidv4 } from "uuid";
@@ -25,7 +25,8 @@ router.get("/inventory", (req, res) => {
 
 router.get("/inventory/:id", (req, res) => {
   const inventory = readInventory();
-  const id = parseInt(req.params.id);
+  const id = req.params.id;
+  console.info(id);
   const item = inventory.find((obj) => obj.id === id);
   if (!item)
     return res.status(404).send("The item with the given ID was not found.");
@@ -55,7 +56,7 @@ router.post("/inventory", (req, res) => {
 
 router.delete("/inventory/:id", (req, res) => {
   let inventory = readInventory();
-  const id = parseInt(req.params.id);
+  const id = req.params.id;
   inventory = inventory.filter((item) => item.id !== id);
   writeInventory(inventory);
   res.status(204).send({ message: "Item deleted successfully" });

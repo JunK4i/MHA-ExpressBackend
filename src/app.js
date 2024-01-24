@@ -3,6 +3,7 @@ import cors from "cors";
 import morgan from "morgan";
 import * as middleware from "./utils/middleware.js";
 import inventoryRouter from "./routes/inventoryRouter.js";
+
 const app = express();
 
 // parse json request body

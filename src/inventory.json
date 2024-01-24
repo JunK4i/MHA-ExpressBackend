@@ -1,23 +1,16 @@
 [
   {
-    "id": 2,
-    "name": "Smartphone",
-    "description": "Latest model with advanced features",
-    "price": 800,
-    "quantity": 15
-  },
-  {
-    "id": 3,
+    "id": "0d145456-d25d-4719-bd62-7f7f139fd13a",
     "name": "Wireless Headphones",
     "description": "Noise-cancelling, over-ear headphones",
     "price": 200,
     "quantity": 20
   },
   {
-    "id": "860b1ee7-6ea0-40a8-bad5-bb0c76e961ca",
-    "name": "Airpods",
+    "id": "06ff6d97-bb6c-4223-9183-8bf5fd165ef4",
+    "name": "Smartphone",
     "description": "Latest model with advanced features",
-    "price": 1000,
+    "price": 800,
     "quantity": 15
   }
 ]
