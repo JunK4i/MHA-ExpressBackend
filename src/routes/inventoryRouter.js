@@ -55,11 +55,23 @@ router.post("/inventory", (req, res) => {
 });
 
 router.delete("/inventory/:id", (req, res) => {
-  let inventory = readInventory();
-  const id = req.params.id;
-  inventory = inventory.filter((item) => item.id !== id);
-  writeInventory(inventory);
-  res.status(204).send({ message: "Item deleted successfully" });
+  try {
+    const inventory = readInventory();
+    const id = req.params.id;
+    const item = inventory.find((obj) => obj.id === id);
+    if (!item)
+      return res.status(404).send("The item with the given ID was not found.");
+    if (item.quantity > 0) {
+      return res
+        .status(400)
+        .send("The item with the given ID has quantity greater than 0.");
+    }
+    const newInventory = inventory.filter((item) => item.id !== id);
+    writeInventory(newInventory);
+    res.status(204).send({ message: "Item deleted successfully" });
+  } catch (e) {
+    res.status(500).send({ message: "Internal Server Error" });
+  }
 });
 
 export default router;
