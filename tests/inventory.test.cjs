@@ -4,8 +4,11 @@ const expect = chai.expect;
 const dotenv = require("dotenv");
 chai.use(chaiHttp);
 
-dotenv.config();
-const domain = process.env.DOMAIN || "http://localhost:3003/";
+// dotenv.config();
+// const domain = process.env.DOMAIN || "http://localhost:3003/"; // code to run domain using env variable
+
+// const domain = "http://localhost:3003/"; // Local development
+const domain = "https://expressjs-production-dca8.up.railway.app/"; // Production
 
 describe("Inventory API", () => {
   // Test for GET /inventory
@@ -18,7 +21,6 @@ describe("Inventory API", () => {
           expect(res).to.have.status(200);
           expect(res.body).to.be.a("array");
           done();
-          cons;
         });
     });
   });
