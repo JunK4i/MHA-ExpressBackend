@@ -61,7 +61,6 @@ describe("CSVStorageService", () => {
     storageService.write(testData);
 
     const readData = storageService.read();
-    console.log(readData);
     expect(readData).to.deep.equal(testData);
 
     // Validate the shape of the data

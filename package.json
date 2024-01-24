@@ -9,7 +9,7 @@
   "scripts": {
     "dev": "nodemon src/index.js",
     "start": "node src/index.js",
-    "test": "mocha tests/**/*.test.js"
+    "test": "mocha 'tests/**/*.{test.js,test.cjs}'"
   },
   "dependencies": {
     "@types/chai-http": "^4.2.0",
