@@ -34,7 +34,7 @@
     "@types/mocha": "^10.0.6",
     "@types/node": "^20.11.5",
     "chai-http": "^4.4.0",
-    "nodemon": "^3.0.1",
+    "nodemon": "^3.0.3",
     "ts-node": "^10.9.2",
     "tsx": "^4.7.0",
     "typescript": "^5.3.3"

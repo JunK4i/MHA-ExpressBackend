@@ -1,23 +1,23 @@
 [
-    {
-        "id": 1,
-        "name": "Laptop",
-        "description": "A high-performance laptop",
-        "price": 1200.00,
-        "quantity": 10
-    },
-    {
-        "id": 2,
-        "name": "Smartphone",
-        "description": "Latest model with advanced features",
-        "price": 800.00,
-        "quantity": 15
-    },
-    {
-        "id": 3,
-        "name": "Wireless Headphones",
-        "description": "Noise-cancelling, over-ear headphones",
-        "price": 200.00,
-        "quantity": 20
-    }
+  {
+    "id": 2,
+    "name": "Smartphone",
+    "description": "Latest model with advanced features",
+    "price": 800,
+    "quantity": 15
+  },
+  {
+    "id": 3,
+    "name": "Wireless Headphones",
+    "description": "Noise-cancelling, over-ear headphones",
+    "price": 200,
+    "quantity": 20
+  },
+  {
+    "id": "860b1ee7-6ea0-40a8-bad5-bb0c76e961ca",
+    "name": "Airpods",
+    "description": "Latest model with advanced features",
+    "price": 1000,
+    "quantity": 15
+  }
 ]

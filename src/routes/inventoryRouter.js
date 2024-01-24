@@ -6,13 +6,13 @@ import { v4 as uuidv4 } from "uuid";
 const router = express.Router();
 
 const readInventory = () => {
-  const data = fs.readFileSync(path.resolve("inventory.json", "utf8"));
+  const data = fs.readFileSync(path.resolve("src/inventory.json"));
   return JSON.parse(data);
 };
 
 const writeInventory = (inventory) => {
   fs.writeFileSync(
-    path.resolve("inventory.json"),
+    path.resolve("src/inventory.json"),
     JSON.stringify(inventory, null, 2),
     "utf8"
   );
@@ -43,12 +43,6 @@ router.post("/inventory", (req, res) => {
   const { error } = schema.validate(req.body);
   if (error) return res.status(400).send(error.details[0].message);
 
-  // Find the largest ID in the current inventory
-  const maxId = inventory.reduce(
-    (max, item) => (item.id > max ? item.id : max),
-    0
-  );
-
   const newInventoryItem = {
     id: uuidv4(), // Generate a new UUID for the item ID
     ...req.body,
@@ -60,7 +54,7 @@ router.post("/inventory", (req, res) => {
 });
 
 router.delete("/inventory/:id", (req, res) => {
-  const inventory = readInventory();
+  let inventory = readInventory();
   const id = parseInt(req.params.id);
   inventory = inventory.filter((item) => item.id !== id);
   writeInventory(inventory);
